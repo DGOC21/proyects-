@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Generador QR</h1>
+
+    <br />
+
+    <form method="get" asp-action="Qr" asp-controller="CodigoQr" class="form-inline">
+        <div class="form-group mb-2">
+            <input type="text" class="form-control" id="texto" name="texto" placeholder="Ingresa el texto">
+        </div>
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <div class="text-danger">
+                @ViewBag.ErrorMessage
+            </div>
+        }
+        <br />
+        <button type="submit" class="btn btn-primary mb-2">Generar QR</button>
+    </form>
+
+</div>

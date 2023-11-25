@@ -1,0 +1,15 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Qr Code";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Codigo QR</h1>
+    <img alt="Embedded QR Code" class="img-responsive"  width="450" height="450" src="data:image/png;base64,@Model"/>
+    <br />
+    <div>
+        <a href="data:image/png;base64,@Model" download="qr-code.jpg">Descargar QR Code</a> |
+        <a asp-action="Index"> Generar nuevo codigo</a>
+    </div>
+
+</div>

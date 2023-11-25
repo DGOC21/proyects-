@@ -1,0 +1,48 @@
+﻿@model List<QRGenerador.Models.QRAtributos>
+
+
+<div class="container" >
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            
+            <h2>Historial de códigos QR generados</h2>
+            <div class="table-responsive">
+                <table class=" table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.ID)</td>
+                                <td>@SimplifyUrl(item.URL)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center">
+                <a asp-action="Index" class="btn btn-primary"> Regresar al inicio</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    @functions {
+        public string SimplifyUrl(string url)
+        {
+            if (url.StartsWith("http://") || url.StartsWith("https://"))
+            {
+                var urlObject = new Uri(url);
+                var simplifiedUrl = urlObject.Host;
+                return simplifiedUrl;
+            }
+            return url;
+        }
+    }
